@@ -22,7 +22,6 @@ CORS(app)
 @app.route('/api/v1/drunk', methods=['GET', 'POST'])
 def get_tasks():
     file = open("data.json", "a")
-    print("foobar")
     data = request.form
     dataDict = data.to_dict(flat=False)
     dataList = dataDict["mlData[]"]
