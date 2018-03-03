@@ -6,11 +6,19 @@ from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score
 
-file = open("ep_sober.json", "r")
-fileString = file.read()
+soberFile = open("sober.json", "r")
+fileString = soberFile.read()
 dataJSON = json.loads(fileString)
 features = dataJSON['data']
 labels = dataJSON['drunk']
+soberFile.close()
+
+drunkFile = open("drunk.json", "r")
+fileString = drunkFile.read()
+dataJSON = json.loads(fileString)
+features = features + dataJSON['data']
+labels = labels + dataJSON['drunk']
+drunkFile.close()
 
 print(features)
 print(labels)
@@ -18,9 +26,9 @@ print(labels)
 data = load_breast_cancer()
 
 label_names = data['target_names']
-labels = data['target']
+#labels = data['target']
 feature_names = data['feature_names']
-features = data['data']
+#features = data['data']
 #features is a list of lists
 
 train, test, train_labels, test_labels = train_test_split(features,
@@ -40,5 +48,3 @@ preds = gnb.predict(test)
 print(accuracy_score(test_labels, preds))
 
 
-def hello():
-    return "hello world"

@@ -1,0 +1,35 @@
+{"data": [
+  [null, null, null, null, 0.896923, null, 0.946631],
+  [null, null, 0.709005, null, null, null, 0.693823],
+  [null, null, null, null, 0.852997, null, 0.847298],
+  [null, null, null, null, 0.631968, null, 0.966426],
+  [0.561605, null, 0.527767, null, 0.797546, null, 0.729387],
+  [null, null, 0.502355, 0.532372, 0.776246, null, 0.983155],
+  [null, null, null, null, null, 0.927401, null],
+  [null, null, null, null, 0.793256, null, 0.859075],
+  [null, null, null, null, null, null, null],
+  [null, null, null, 0.579192, 0.96763, null, 0.93905],
+  [null, null, null, 0.693866, null, null, 0.536408],
+  [null, null, null, null, 0.946302, null, null],
+  [null, null, 0.588971, 0.529199, null, null, 0.839232],
+  [null, null, 0.703948, 0.540979, null, null, null],
+  [null, null, null, null, 0.752452, null, 0.570048]
+],
+"drunk": [
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0
+]
+}
