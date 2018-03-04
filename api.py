@@ -19,7 +19,7 @@ tasks = [
         ]
 
 CORS(app)
-@app.route('/api/v1/drunk', methods=['GET', 'POST'])
+@app.route('/api/v1/drunk', methods=['POST'])
 def get_tasks():
     file = open("data.json", "a")
     data = request.form
@@ -36,6 +36,23 @@ def get_tasks():
 
     file.close()
     return jsonify({'tasks': tasks})
+
+@app.route('/api/v1/drunk', methods=['GET'])
+def get_ml():
+    file = open("data.json", "r")
+    print(file)
+    for line in file:
+        pass
+    lastLine = line
+    file.close()
+
+    #then call ml isDrunk on lastLine
+    #the last line contains the aggregate data
+
+
+    data = request.args.get('done')
+
+    return jsonify({'isDrunk': True})
 
 if __name__ == '__main__':
     app.run(debug=True)
