@@ -3,24 +3,9 @@ from flask_cors import CORS
 import json
 
 app = Flask(__name__)
-tasks = [
-        {
-            'id': 1,
-            'title': u'Buy groceries',
-            'description': u'Milk, Cheese, Pizza, Fruit, Tylenol',
-            'done': False
-            },
-        {
-            'id': 2,
-            'title': u'Learn Python',
-            'description': u'Need to find a good Python tutorial on the web',
-            'done': False
-            }
-        ]
-
 CORS(app)
 @app.route('/api/v1/drunk', methods=['POST'])
-def get_tasks():
+def give_data():
     file = open("data.json", "a")
     data = request.form
     dataDict = data.to_dict(flat=False)
@@ -35,12 +20,39 @@ def get_tasks():
     file.write(']' + '\n')
 
     file.close()
-    return jsonify({'tasks': tasks})
+    return jsonify({'status': "ok"})
+
+CORS(app)
+@app.route('/api/v1/confidence', methods=['POST'])
+def give_confidence():
+    cFile = open("confidence.json", "r")
+    for line in cFile:
+        pass
+    lastLine = line
+    cFile.close()
+
+    data = request.form
+    dataDict = data.to_dict(flat=False)
+    dataList = dataDict['confidenceArray[]']
+
+    totalSum = 0
+    for element in dataList:
+        totalSum += float(element)
+
+
+    totalAvg= (totalSum + float(lastLine))/(len(dataList))
+
+    nFile = open("confidence.json", "w")
+    nFile.write(str(totalAvg))
+    nFile.close()
+    return  jsonify({'status': 'ok'})
+
+
 
 @app.route('/api/v1/drunk', methods=['GET'])
 def get_ml():
+    print("in get route")
     file = open("data.json", "r")
-    print(file)
     for line in file:
         pass
     lastLine = line
