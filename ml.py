@@ -21,14 +21,15 @@ drunkFile.close()
 
 #train, test, train_labels, test_labels = train_test_split(features,
 #                                                          labels,
-#                                                          test_size=0.33,
-#                                                          random_state=42)
+#                                                          test_size=0.1,
+#                                                          random_state=1)
 
 # Initialize our classifier
 gnb = GaussianNB()
 
 # Train our classifier
 model = gnb.fit(features, labels)
+#model = gnb.fit(train, train_labels)
 #preds = gnb.predict(test)
 
 # Evaluate accuracy
