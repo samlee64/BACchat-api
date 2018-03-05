@@ -40,7 +40,7 @@ def give_confidence():
         totalSum += float(element)
 
 
-    totalAvg= (totalSum + float(lastLine))/(len(dataList))
+    totalAvg= (((totalSum)/(len(dataList))) + float(lastLine))/2
 
     nFile = open("confidence.json", "w")
     nFile.write(str(totalAvg))
