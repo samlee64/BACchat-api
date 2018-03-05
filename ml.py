@@ -19,9 +19,6 @@ features = features + dataJSON['data']
 labels = labels + dataJSON['drunk']
 drunkFile.close()
 
-print(features)
-print(labels)
-
 train, test, train_labels, test_labels = train_test_split(features,
                                                           labels,
                                                           test_size=0.33,
@@ -32,7 +29,6 @@ gnb = GaussianNB()
 
 # Train our classifier
 model = gnb.fit(train, train_labels)
-
 preds = gnb.predict(test)
 
 # Evaluate accuracy
@@ -40,8 +36,5 @@ print(accuracy_score(test_labels, preds))
 
 
 def isDrunk(inputData):
-    return gnb.predict(inputData)
-
-
-
+    return gnb.predict([inputData])
 

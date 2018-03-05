@@ -1,6 +1,11 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import json
+import ml
+
+cFile = open("confidence.json", "w")
+cFile.write('0')
+cFile.close()
 
 app = Flask(__name__)
 CORS(app)
@@ -51,20 +56,32 @@ def give_confidence():
 
 @app.route('/api/v1/drunk', methods=['GET'])
 def get_ml():
-    print("in get route")
     file = open("data.json", "r")
     for line in file:
         pass
-    lastLine = line
+    data = line
     file.close()
 
-    #then call ml isDrunk on lastLine
-    #the last line contains the aggregate data
+    file = open("confidence.json", "r")
+    for line in file:
+        pass
+    confidence = line
+    file.close()
 
+    cFile = open("confidence.json", "w")
+    cFile.write('0')
+    cFile.close()
 
-    data = request.args.get('done')
+    jsonData = json.loads(data)
+    jsonData.append(float(confidence))
+    result = ml.isDrunk(jsonData)
 
-    return jsonify({'isDrunk': True})
+    head, *tail = result
+
+    if head == 1:
+        return jsonify({'isDrunk': True})
+    else:
+        return jsonify({'isDrunk': False})
 
 if __name__ == '__main__':
     app.run(debug=True)
