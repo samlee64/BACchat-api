@@ -77,7 +77,6 @@ def get_ml():
     result = ml.isDrunk(jsonData)
 
     head, *tail = result
-
     if head == 1:
         return jsonify({'isDrunk': True})
     else:
