@@ -1,3 +1,7 @@
+# Description
+Use IBM Watson sentiment analysis on transcribed speech from intoxicated/sober college students to determine soberity. 
+
+# Run  
 In order to run the api
 ```
 python3 api.py
